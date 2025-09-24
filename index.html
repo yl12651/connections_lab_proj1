@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="character-placeholder">
+        Character placeholder box
+    </div>
+    <div class="slider-container">
+        <input type="range" id="slider" class="slider" min="0" max="100" value="50">
+    </div>
+    <div class="buttons-container">
+        <button id="personality1" class="personality-button" style="background-color: #F8907C;" onclick="changeSliderColor('personality1')">Personality 1</button>
+        <button id="personality2" class="personality-button" style="background-color: #90B4F6;" onclick="changeSliderColor('personality2')">Personality 2</button>
+        <button id="personality3" class="personality-button" style="background-color: #B3D381;" onclick="changeSliderColor('personality3')">Personality 3</button>
+        <button id="personality4" class="personality-button" style="background-color: #EAE4A7;" onclick="changeSliderColor('personality4')">Personality 4</button>
+        <button id="personality5" class="personality-button" style="background-color: #CCA2C8;" onclick="changeSliderColor('personality5')">Personality 5</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
