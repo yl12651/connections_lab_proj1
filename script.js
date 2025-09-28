@@ -1,70 +1,35 @@
-let personality1Value = 50, personality2Value = 50, personality3Value = 50, personality4Value = 50, personality5Value = 50;
+(() => {
+    const MIN_WOOL = 0;
+    const MAX_WOOL = 5;
 
-window.onload = () => {
-    const slider = document.getElementById('slider');
-    const button = document.getElementById('personality1');
-    const color = button.style.backgroundColor;
+    const counterEl = document.getElementById("wool-count");
+    const decreaseBtn = document.querySelector(".counter-btn[data-direction=\"down\"]");
+    const increaseBtn = document.querySelector(".counter-btn[data-direction=\"up\"]");
+    const woolString = document.querySelector(".wool-string");
 
-    slider.style.setProperty('--slider-thumb-color', color);
-    slider.style.setProperty('--slider-fill-color', color);
-
-    slider.value = personality1Value;
-    slider.style.setProperty('--p', slider.value);
-
-    slider.oninput = () => {
-        personality1Value = slider.value;
-        slider.style.setProperty('--p', slider.value);
-    };
-};
-
-function changeSliderColor(buttonId) {
-    const slider = document.getElementById('slider');
-    const button = document.getElementById(buttonId);
-    const color = button.style.backgroundColor;
-
-    slider.style.setProperty('--slider-thumb-color', color);
-    slider.style.setProperty('--slider-fill-color', color);
-
-    switch (buttonId) {
-        case 'personality1':
-            slider.value = personality1Value;
-            slider.style.setProperty('--p', slider.value);
-            slider.oninput = () => {
-                personality1Value = slider.value;
-                slider.style.setProperty('--p', slider.value);
-            };
-            break;
-        case 'personality2':
-            slider.value = personality2Value;
-            slider.style.setProperty('--p', slider.value);
-            slider.oninput = () => {
-                personality2Value = slider.value;
-                slider.style.setProperty('--p', slider.value);
-            };
-            break;
-        case 'personality3':
-            slider.value = personality3Value;
-            slider.style.setProperty('--p', slider.value);
-            slider.oninput = () => {
-                personality3Value = slider.value;
-                slider.style.setProperty('--p', slider.value);
-            };
-            break;
-        case 'personality4':
-            slider.value = personality4Value;
-            slider.style.setProperty('--p', slider.value);
-            slider.oninput = () => {
-                personality4Value = slider.value;
-                slider.style.setProperty('--p', slider.value);
-            };
-            break;
-        case 'personality5':
-            slider.value = personality5Value;
-            slider.style.setProperty('--p', slider.value);
-            slider.oninput = () => {
-                personality5Value = slider.value;
-                slider.style.setProperty('--p', slider.value);
-            };
-            break;
+    if (!counterEl || !decreaseBtn || !increaseBtn) {
+        window.wool = MIN_WOOL;
+        if (woolString) {
+            woolString.hidden = true;
+        }
+        return;
     }
-}
+
+    const clamp = (value) => Math.min(MAX_WOOL, Math.max(MIN_WOOL, value));
+
+    const setWool = (value) => {
+        window.wool = clamp(value);
+        counterEl.textContent = String(window.wool);
+        decreaseBtn.disabled = window.wool <= MIN_WOOL;
+        increaseBtn.disabled = window.wool >= MAX_WOOL;
+        if (woolString) {
+            woolString.hidden = window.wool < 1;
+        }
+    };
+
+    decreaseBtn.addEventListener("click", () => setWool(window.wool - 1));
+    increaseBtn.addEventListener("click", () => setWool(window.wool + 1));
+
+    setWool(typeof window.wool === "number" ? window.wool : MIN_WOOL);
+})();
+

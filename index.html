@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Prototype</title>
+    <title>Creating Human</title>
+    <link rel="icon" type="image/x-icon" href="assets/chara.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="character-placeholder">
-        Character placeholder box
-    </div>
-    <div class="slider-container">
-        <input type="range" id="slider" class="slider" min="0" max="100" value="50">
-    </div>
-    <div class="buttons-container">
-        <button id="personality1" class="personality-button" style="background-color: #F8907C;" onclick="changeSliderColor('personality1')">Personality 1</button>
-        <button id="personality2" class="personality-button" style="background-color: #90B4F6;" onclick="changeSliderColor('personality2')">Personality 2</button>
-        <button id="personality3" class="personality-button" style="background-color: #B3D381;" onclick="changeSliderColor('personality3')">Personality 3</button>
-        <button id="personality4" class="personality-button" style="background-color: #EAE4A7;" onclick="changeSliderColor('personality4')">Personality 4</button>
-        <button id="personality5" class="personality-button" style="background-color: #CCA2C8;" onclick="changeSliderColor('personality5')">Personality 5</button>
-    </div>
+    <main class="canvas">
+        <img src="assets/plate.png" alt="Plate" class="plate" />
+        <img src="assets/wool_string.png" alt="Wool string" class="wool-string" hidden />
+        <aside class="resource-panel" aria-label="Golden wool counter">
+            <img src="assets/golden_wool.png" alt="Golden wool" class="resource-icon" />
+            <div class="resource-counter" role="group" aria-label="Adjust golden wool">
+                <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease wool">-</button>
+                <span id="wool-count" class="resource-value" aria-live="polite" aria-atomic="true">0</span>
+                <button type="button" class="counter-btn" data-direction="up" aria-label="Increase wool">+</button>
+            </div>
+        </aside>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
+
