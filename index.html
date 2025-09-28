@@ -11,7 +11,14 @@
     <main class="canvas">
         <img src="assets/plate.png" alt="Plate" class="plate" />
         <img src="assets/wool_string.png" alt="Wool string" class="wool-string" hidden />
-        <aside class="resource-panel" aria-label="Golden wool counter">
+
+        <svg class="resource-guides" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+            <polyline class="guide-line guide-line--sensitive" points="710,280 750,220 880,220" />
+            <polyline class="guide-line guide-line--impulsive" points="250,660 100,660 0,780" />
+            <polyline class="guide-line guide-line--extrovert" points="250,400 170,300 170,80" />
+        </svg>
+
+        <aside class="resource-panel resource-panel--wool" data-resource="wool" data-min="0" data-max="5" data-hover-text="The Golden Fleece: the essential material for crafting human." aria-label="Golden wool counter">
             <img src="assets/golden_wool.png" alt="Golden wool" class="resource-icon" />
             <div class="resource-counter" role="group" aria-label="Adjust golden wool">
                 <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease wool">-</button>
@@ -19,8 +26,35 @@
                 <button type="button" class="counter-btn" data-direction="up" aria-label="Increase wool">+</button>
             </div>
         </aside>
+
+        <aside class="resource-panel resource-panel--sensitive" data-resource="sensitive" data-min="0" data-max="5" data-hover-text="Controls how much decisions rely on feeling rather than thinking." aria-label="Sensitive counter">
+            <img src="assets/sensitive.png" alt="Sensitive" class="resource-icon" />
+            <div class="resource-counter" role="group" aria-label="Adjust sensitive value">
+                <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease sensitive">-</button>
+                <span id="sensitive-count" class="resource-value" aria-live="polite" aria-atomic="true">0</span>
+                <button type="button" class="counter-btn" data-direction="up" aria-label="Increase sensitive">+</button>
+            </div>
+        </aside>
+
+        <aside class="resource-panel resource-panel--impulsive" data-resource="impulsive" data-min="0" data-max="5" data-hover-text="Controls how much actions are driven by impulse rather than careful planning." aria-label="Impulsive counter">
+            <img src="assets/impulsive.png" alt="Impulsive" class="resource-icon" />
+            <div class="resource-counter" role="group" aria-label="Adjust impulsive value">
+                <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease impulsive">-</button>
+                <span id="impulsive-count" class="resource-value" aria-live="polite" aria-atomic="true">0</span>
+                <button type="button" class="counter-btn" data-direction="up" aria-label="Increase impulsive">+</button>
+            </div>
+        </aside>
+
+        <aside class="resource-panel resource-panel--extrovert" data-resource="extrovert" data-min="0" data-max="5" data-hover-text="Controls how much energy comes from being around others rather than alone." aria-label="Extrovert counter">
+            <img src="assets/extrovert.png" alt="Extrovert" class="resource-icon" />
+            <div class="resource-counter" role="group" aria-label="Adjust extrovert value">
+                <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease extrovert">-</button>
+                <span id="extrovert-count" class="resource-value" aria-live="polite" aria-atomic="true">0</span>
+                <button type="button" class="counter-btn" data-direction="up" aria-label="Increase extrovert">+</button>
+            </div>
+        </aside>
     </main>
+    <p class="resource-hint" aria-live="polite"></p>
     <script src="script.js"></script>
 </body>
 </html>
-
