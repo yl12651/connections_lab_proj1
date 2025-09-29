@@ -84,8 +84,6 @@
 
     // hover hints based on panel
     const showHint = (element) => {
-        const resource = element.dataset.resource;
-
         if (!hintEl) {
             return;
         }
