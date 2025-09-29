@@ -78,10 +78,9 @@
         existing.forEach((img, index) => {
             img.dataset.index = String(index);
             if (!img.dataset.rotation) {
-                const min = -20;
-                const max = 20;
-                const angle = Math.random() * (max - min) + min;
-                img.dataset.rotation = angle.toFixed(1);
+                const min = -12;
+                const max = 12;
+                img.dataset.rotation = (Math.random() * (max - min) + min).toFixed(1);
             }
             const rotation = img.dataset.rotation;
             const verticalOffset = 18 - index * 5;
@@ -92,28 +91,8 @@
         woolStringsContainer.hidden = targetLayers === 0;
     };
 
-    const activateGuide = (resource) => {
-        if (!canvas) {
-            return;
-        }
-
-        if (resource === "sensitive" || resource === "impulsive" || resource === "extrovert") {
-            canvas.setAttribute("data-active-guide", resource);
-        } else {
-            canvas.removeAttribute("data-active-guide");
-        }
-    };
-
-    const deactivateGuide = () => {
-        if (!canvas) {
-            return;
-        }
-        canvas.removeAttribute("data-active-guide");
-    };
-
     const showHint = (element) => {
         const resource = element.dataset.resource;
-        activateGuide(resource);
 
         if (!hintEl) {
             return;
@@ -130,8 +109,6 @@
     };
 
     const hideHint = () => {
-        deactivateGuide();
-
         if (!hintEl) {
             return;
         }
