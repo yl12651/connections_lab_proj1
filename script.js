@@ -1,4 +1,5 @@
 (() => {
+    // all interactive elements
     const bodyEl = document.body;
     const canvas = document.querySelector(".canvas");
     const plate = document.querySelector(".plate");
@@ -6,7 +7,6 @@
     const woolStringTemplate = woolStringsContainer?.querySelector('.wool-string[data-template="true"]');
     const panels = Array.from(document.querySelectorAll(".resource-panel[data-resource]"));
     const hintEl = document.querySelector(".resource-hint");
-    const craftHint = document.querySelector(".craft-hint");
     const resultOverlay = document.querySelector(".result-overlay");
     const resultImage = resultOverlay?.querySelector(".result-image");
 
@@ -35,22 +35,12 @@
         return Number.isFinite(numeric) ? numeric : fallback;
     };
 
+    // used to maintain values within 0 to 5
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
     const getResourceValue = (resource) => (typeof window[resource] === "number" ? window[resource] : 0);
 
-    const setCraftHintState = () => {
-        if (!craftHint) {
-            return;
-        }
-        const hasWool = getResourceValue("wool") >= 1;
-        if (hasWool) {
-            craftHint.setAttribute("data-active", "true");
-        } else {
-            craftHint.removeAttribute("data-active");
-        }
-    };
-
+    // clone wool strings based on wool count, position them slightly above every time with some random rotation
     const updateWoolStrings = (count) => {
         if (!woolStringsContainer || !woolStringTemplate) {
             return;
@@ -77,6 +67,7 @@
 
         existing.forEach((img, index) => {
             img.dataset.index = String(index);
+            // random rotation
             if (!img.dataset.rotation) {
                 const min = -12;
                 const max = 12;
@@ -91,6 +82,7 @@
         woolStringsContainer.hidden = targetLayers === 0;
     };
 
+    // hover hints based on panel
     const showHint = (element) => {
         const resource = element.dataset.resource;
 
@@ -116,6 +108,7 @@
         hintEl.removeAttribute("data-visible");
     };
 
+    // panel setup: counter buttons and value syncing
     panels.forEach((panel) => {
         const resource = panel.dataset.resource;
         if (!resource) {
@@ -142,7 +135,6 @@
 
             if (resource === "wool") {
                 updateWoolStrings(clamped);
-                setCraftHintState();
             }
         };
 
@@ -173,8 +165,7 @@
         });
     }
 
-    setCraftHintState();
-
+    // prevents re-triggering
     let crafted = false;
 
     const pickFallbackRole = (values) => {
@@ -191,6 +182,7 @@
         return options[0].role;
     };
 
+    // determine role based on values
     const resolveRole = (values) => {
         const Y = values.wool;
         const A = values.sensitive;

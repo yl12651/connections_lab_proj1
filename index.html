@@ -10,12 +10,16 @@
 <body>
     <main class="canvas">
         <img src="assets/plate.png" alt="Plate" class="plate" data-hover-text="Press Enter to Craft" />
+        <!-- increment-able wool strings -->
         <div class="wool-strings" aria-hidden="true">
             <img src="assets/wool_string.png" alt="" class="wool-string" data-template="true" hidden />
         </div>
 
+        <!-- Wool: Bottom -->
         <aside class="resource-panel resource-panel--wool" data-resource="wool" data-min="0" data-max="5" data-hover-text="The Golden Fleece: the essential material for crafting human." aria-label="Golden wool counter">
+            <!-- Resource Image -->
             <img src="assets/golden_wool.png" alt="Golden wool" class="resource-icon" />
+            
             <div class="resource-counter" role="group" aria-label="Adjust golden wool">
                 <button type="button" class="counter-btn" data-direction="down" aria-label="Decrease wool">-</button>
                 <span id="wool-count" class="resource-value" aria-live="polite" aria-atomic="true">0</span>
@@ -23,6 +27,7 @@
             </div>
         </aside>
 
+        <!-- Sensitive: Top-left -->
         <aside class="resource-panel resource-panel--sensitive" data-resource="sensitive" data-min="0" data-max="5" data-hover-text="Controls how much decisions rely on feeling rather than thinking." aria-label="Sensitive counter">
             <img src="assets/sensitive.png" alt="Sensitive" class="resource-icon" />
             <div class="resource-counter" role="group" aria-label="Adjust sensitive value">
@@ -32,6 +37,7 @@
             </div>
         </aside>
 
+        <!-- Impulsive: Bottom-left -->
         <aside class="resource-panel resource-panel--impulsive" data-resource="impulsive" data-min="0" data-max="5" data-hover-text="Controls how much actions are driven by impulse rather than careful planning." aria-label="Impulsive counter">
             <img src="assets/impulsive.png" alt="Impulsive" class="resource-icon" />
             <div class="resource-counter" role="group" aria-label="Adjust impulsive value">
@@ -41,6 +47,7 @@
             </div>
         </aside>
 
+        <!-- Extrovert: Right -->
         <aside class="resource-panel resource-panel--extrovert" data-resource="extrovert" data-min="0" data-max="5" data-hover-text="Controls how much energy comes from being around others rather than alone." aria-label="Extrovert counter">
             <img src="assets/extrovert.png" alt="Extrovert" class="resource-icon" />
             <div class="resource-counter" role="group" aria-label="Adjust extrovert value">
@@ -52,7 +59,7 @@
     </main>
 
     <p class="resource-hint" aria-live="polite"></p>
-
+    
     <div class="result-overlay" aria-live="polite" aria-hidden="true">
         <img src="" alt="Crafted result" class="result-image" />
     </div>
