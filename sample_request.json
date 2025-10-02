@@ -1,0 +1,14 @@
+{
+  "action": "craft_human",
+  "resources": {
+    "wool": 3,
+    "sensitive": 4,
+    "impulsive": 2,
+    "extrovert": 1
+  },
+  "metadata": {
+    "clientTimestamp": "2025-10-02T14:30:00Z",
+    "sessionId": "abc123xyz",
+    "userAgent": "Mozilla/5.0"
+  }
+}
