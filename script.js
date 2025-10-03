@@ -9,6 +9,8 @@
     const hintEl = document.querySelector(".resource-hint");
     const resultOverlay = document.querySelector(".result-overlay");
     const resultImage = resultOverlay?.querySelector(".result-image");
+    const resultTypeEl = resultOverlay?.querySelector(".result-type");
+    const resultDescEl = resultOverlay?.querySelector(".result-description");
 
     if (!panels.length) {
         if (woolStringsContainer) {
@@ -21,14 +23,20 @@
         return;
     }
 
-    const resultMeta = {
-        Emo: { src: "assets/result1.png", alt: "Subject-E - Emotional Type Test Subject" },
-        Rea: { src: "assets/result2.png", alt: "Subject-R - Reactive Type Test Subject" },
-        Soc: { src: "assets/result3.png", alt: "Subject-S - Social Type Test Subject" },
-        Log: { src: "assets/result4.png", alt: "Subject-L - Logical Type Test Subject" },
-        Inw: { src: "assets/result5.png", alt: "Subject-I - Inward Type Test Subject" },
-        Cor: { src: "assets/result6.png", alt: "Subject-C - Core Sample" }
-    };
+    // Characters metadata from JSON
+    let characters = null;
+    async function loadCharacters() {
+        try {
+            const res = await fetch("data/characters.json", { cache: "no-store" });
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            characters = await res.json();
+        } catch (err) {
+            console.warn("Failed to load data/characters.json; falling back to built-in map.", err);
+        }
+    }
+    loadCharacters();
 
     const toNumber = (value, fallback) => {
         const numeric = Number(value);
@@ -227,14 +235,24 @@
         };
 
         const role = resolveRole(values);
-        const meta = resultMeta[role];
+
+        if (!characters) {
+            console.warn("Character data not ready yet—try again in a moment.");
+            return;
+        }
+        const meta = characters[role];
 
         if (!meta || !resultOverlay || !resultImage) {
             return;
         }
 
-        resultImage.src = meta.src;
-        resultImage.alt = meta.alt;
+        // use JSON-sourced info
+        resultImage.src = meta.image;
+        resultImage.alt = meta.type || role;
+
+        if (resultTypeEl) resultTypeEl.textContent = meta.type || "";
+        if (resultDescEl) resultDescEl.textContent = meta.description || "";
+
         resultOverlay.setAttribute("aria-hidden", "false");
         bodyEl.classList.add("crafting");
         crafted = true;

@@ -1,0 +1,32 @@
+{
+  "Emo": {
+    "image": "assets/result1.png",
+    "type": "Subject-E",
+    "description": "High emotional sensitivity, strong empathy feedback loop; reacts swiftly to group mood swings; used to monitor collective emotional waves."
+  },
+  "Rea": {
+    "image": "assets/result2.png",
+    "type": "Subject-R",
+    "description": "Low impulse-control threshold; quick to act under stress; designed for crisis-response simulations; reveals how sudden decisions affect controlled environments."
+  },
+  "Soc": {
+    "image": "assets/result3.png",
+    "type": "Subject-S",
+    "description": "Highly extroverted and persuasive; excels at networking and influence; key to studying opinion spread, crowd dynamics, and viral communication."
+  },
+  "Log": {
+    "image": "assets/result4.png",
+    "type": "Subject-L",
+    "description": "Predominantly rational and composed; excels at structured decision-making and calculations; serves as a stabilizing baseline in behavioral experiments."
+  },
+  "Inw": {
+    "image": "assets/result5.png",
+    "type": "Subject-I",
+    "description": "Low external energy and visibility; blends into background populations; useful for studying observer bias and unnoticed anomaly detection in simulations."
+  },
+  "Cor": {
+    "image": "assets/result6.png",
+    "type": "Subject-C",
+    "description": "High and stable life-energy baseline; balanced across emotional, reactive, and social traits; represents the laboratory’s ideal equilibrium model for sustaining the controlled world."
+  }
+}
